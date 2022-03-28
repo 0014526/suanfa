@@ -1,1 +1,58 @@
 package main
+
+func main() {
+
+}
+
+type MinStack struct {
+	nums []int // 存储栈
+	min []int // 辅助存储栈，存储最小值
+}
+
+
+/** initialize your data structure here. */
+func Constructor1() MinStack {
+	return MinStack{
+		make([]int,0,3),
+		make([]int,0,3),
+	}
+}
+
+
+func (this *MinStack) Push(x int)  {
+	this.nums=append(this.nums,x)
+	if len(this.nums)==0 {
+		this.min=append(this.min,x)
+	}else if this.min[len(this.min)-1]<x{
+		this.min=append(this.min,this.min[len(this.min)-1])
+	}else{
+		this.min=append(this.min,x)
+	}
+}
+
+
+func (this *MinStack) Pop()  {
+	this.nums=this.nums[:len(this.nums)-1]
+	this.min=this.min[:len(this.min)-1]
+}
+
+
+func (this *MinStack) Top() int {
+	return this.nums[len(this.nums)-1]
+}
+
+
+func (this *MinStack) Min() int {
+	return this.min[len(this.min)-1]
+}
+
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.Push(x);
+ * obj.Pop();
+ * param_3 := obj.Top();
+ * param_4 := obj.Min();
+ */
+

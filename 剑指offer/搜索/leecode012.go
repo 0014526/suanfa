@@ -1,1 +1,6 @@
-package 搜索
+package main
+
+func main() {
+
+
+}

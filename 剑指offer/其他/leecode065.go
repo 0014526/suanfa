@@ -1,15 +1,11 @@
 package main
 
 func add(a int, b int) int {
-	// 进位
-	var carry int
+	temp:=0
 	for b != 0 {
-		// 进位
-		carry=(a&b)<<1
-		// 不进位加
+		temp=(a&b)<<1
 		a^=b
-		// 加进位
-		b= carry
+		b=temp
 	}
 	return a
 }
